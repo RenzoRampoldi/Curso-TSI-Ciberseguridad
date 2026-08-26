@@ -1,0 +1,13 @@
+rules:
+  - id: no-eval-python
+    languages:
+      - python
+    message: "Uso de eval() detectado. Esta función puede ejecutar código arbitrario y representa un riesgo de seguridad."
+    severity: ERROR
+    pattern: eval(...)
+    metadata:
+      category: security
+      technology:
+        - python
+      cwe:
+        - "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code"
