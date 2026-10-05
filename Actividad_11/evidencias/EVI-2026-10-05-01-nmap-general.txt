@@ -1,0 +1,62 @@
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-10-05 13:16 ric
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00091s latency).
+Other addresses for localhost (not scanned): ::1
+rDNS record for 127.0.0.1: kubernetes.docker.internal
+Not shown: 992 closed tcp ports (reset)
+PORT      STATE SERVICE       VERSION
+135/tcp   open  msrpc         Microsoft Windows RPC
+445/tcp   open  microsoft-ds?
+2179/tcp  open  vmrdp?
+3389/tcp  open  ms-wbt-server Microsoft Terminal Services
+5000/tcp  open  upnp?
+5800/tcp  open  vnc-http      TightVNC (user: cmsp715; VNC TCP port: 5900)
+5900/tcp  open  vnc           VNC (protocol 3.8)
+15000/tcp open  hydap?
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5000-TCP:V=7.94%I=7%D=10/5%Time=6AC3952E%P=i686-pc-windows-windows%
+SF:r(GetRequest,236,"HTTP/1\.1\x20404\x20NOT\x20FOUND\r\nServer:\x20Werkze
+SF:ug/3\.1\.8\x20Python/3\.11\.9\r\nDate:\x20Mon,\x2005\x20Oct\x202026\x20
+SF:12:16:45\x20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nCont
+SF:ent-Length:\x20207\r\nAccess-Control-Allow-Origin:\x20http://localhost:
+SF:3000\r\nX-Content-Type-Options:\x20nosniff\r\nX-Frame-Options:\x20DENY\
+SF:r\nContent-Security-Policy:\x20default-src\x20'self'\r\nCache-Control:\
+SF:x20no-store\r\nConnection:\x20close\r\n\r\n<!doctype\x20html>\n<html\x2
+SF:0lang=en>\n<title>404\x20Not\x20Found</title>\n<h1>Not\x20Found</h1>\n<
+SF:p>The\x20requested\x20URL\x20was\x20not\x20found\x20on\x20the\x20server
+SF:\.\x20If\x20you\x20entered\x20the\x20URL\x20manually\x20please\x20check
+SF:\x20your\x20spelling\x20and\x20try\x20again\.</p>\n")%r(RTSPRequest,16C
+SF:,"<!DOCTYPE\x20HTML>\n<html\x20lang=\"en\">\n\x20\x20\x20\x20<head>\n\x
+SF:20\x20\x20\x20\x20\x20\x20\x20<meta\x20charset=\"utf-8\">\n\x20\x20\x20
+SF:\x20\x20\x20\x20\x20<title>Error\x20response</title>\n\x20\x20\x20\x20<
+SF:/head>\n\x20\x20\x20\x20<body>\n\x20\x20\x20\x20\x20\x20\x20\x20<h1>Err
+SF:or\x20response</h1>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Error\x20code:\
+SF:x20400</p>\n\x20\x20\x20\x20\x20\x20\x20\x20<p>Message:\x20Bad\x20reque
+SF:st\x20version\x20\('RTSP/1\.0'\)\.</p>\n\x20\x20\x20\x20\x20\x20\x20\x2
+SF:0<p>Error\x20code\x20explanation:\x20400\x20-\x20Bad\x20request\x20synt
+SF:ax\x20or\x20unsupported\x20method\.</p>\n\x20\x20\x20\x20</body>\n</htm
+SF:l>\n")%r(HTTPOptions,236,"HTTP/1\.1\x20404\x20NOT\x20FOUND\r\nServer:\x
+SF:20Werkzeug/3\.1\.8\x20Python/3\.11\.9\r\nDate:\x20Mon,\x2005\x20Oct\x20
+SF:2026\x2012:17:01\x20GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8
+SF:\r\nContent-Length:\x20207\r\nAccess-Control-Allow-Origin:\x20http://lo
+SF:calhost:3000\r\nX-Content-Type-Options:\x20nosniff\r\nX-Frame-Options:\
+SF:x20DENY\r\nContent-Security-Policy:\x20default-src\x20'self'\r\nCache-C
+SF:ontrol:\x20no-store\r\nConnection:\x20close\r\n\r\n<!doctype\x20html>\n
+SF:<html\x20lang=en>\n<title>404\x20Not\x20Found</title>\n<h1>Not\x20Found
+SF:</h1>\n<p>The\x20requested\x20URL\x20was\x20not\x20found\x20on\x20the\x
+SF:20server\.\x20If\x20you\x20entered\x20the\x20URL\x20manually\x20please\
+SF:x20check\x20your\x20spelling\x20and\x20try\x20again\.</p>\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port15000-TCP:V=7.94%I=7%D=10/5%Time=6AC39532%P=i686-pc-windows-windows
+SF:%r(GetRequest,52,"HTTP/1\.1\x20404\x20Not\x20Found\r\nDate:\x20Mon,\x20
+SF:05\x20Oct\x202026\x2012:16:50\x20GMT\r\nConnection:\x20close\r\n\r\n")%
+SF:r(HTTPOptions,52,"HTTP/1\.1\x20404\x20Not\x20Found\r\nDate:\x20Mon,\x20
+SF:05\x20Oct\x202026\x2012:16:50\x20GMT\r\nConnection:\x20close\r\n\r\n")%
+SF:r(FourOhFourRequest,52,"HTTP/1\.1\x20404\x20Not\x20Found\r\nDate:\x20Mo
+SF:n,\x2005\x20Oct\x202026\x2012:16:50\x20GMT\r\nConnection:\x20close\r\n\
+SF:r\n");
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 93.40 seconds
