@@ -1,0 +1,20 @@
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.9 Python/3.11.9
+Date: Mon, 26 Oct 2026 12:16:40 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 208
+Content-Security-Policy: default-src 'self'
+X-Content-Type-Options: nosniff
+Connection: close
+
+
+    <html>
+        <head>
+            <title>Actividad 19 - XSS Corregido</title>
+        </head>
+        <body>
+            <h1>Bienvenido</h1>
+            <p>Hola, Juan</p>
+        </body>
+    </html>
+    
