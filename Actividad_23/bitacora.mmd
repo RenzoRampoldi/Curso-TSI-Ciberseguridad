@@ -1,0 +1,71 @@
+# Bitácora – Actividad 23: Diagrama de Flujo de Datos (DFD)
+
+**Fecha:** 28/10/2026  
+**Curso:** RSI – Ciberseguridad Aplicada con IA  
+**Sistema utilizado:** API REST Flask – Actividad 04  
+**Caso de estudio:** Banco Ficticio del Uruguay
+
+## 1. Objetivo
+
+Identificar los actores, procesos, almacenes y flujos de datos de una aplicación existente mediante diagramas de flujo de datos (DFD), permitiendo reconocer límites de confianza y posibles riesgos de seguridad.
+
+## 2. Alcance
+
+Se utilizó la API REST desarrollada en la Actividad 04, implementada mediante Python y Flask.
+
+El análisis se centró en el proceso de consulta de usuarios a través del endpoint `/usuarios`, que requiere autenticación mediante token Bearer.
+
+También se identificó el endpoint `/health`, utilizado para consultar el estado de funcionamiento de la aplicación.
+
+## 3. Actividades realizadas
+
+- Se localizó y revisó el código fuente `app.py` de la Actividad 04.
+- Se identificaron las entidades externas, los procesos internos y los almacenes de datos.
+- Se elaboró el DFD de nivel 0 para representar la interacción general entre el cliente HTTP y la API.
+- Se elaboró el DFD de nivel 1 para representar la recepción de solicitudes, validación del token, consulta de usuarios y generación de respuestas JSON.
+- Se identificaron y representaron los límites de confianza.
+- Se utilizó Mermaid para crear y visualizar ambos diagramas.
+- Se exportaron las imágenes de los diagramas como evidencias.
+- Se guardaron los códigos Mermaid y la lista de elementos identificados.
+
+## 4. Elementos identificados
+
+**Entidad externa:** Cliente HTTP.
+
+**Procesos:** Recepción de solicitudes, validación de token, consulta de usuarios y generación de respuestas JSON.
+
+**Almacenes:** Lista de usuarios en memoria y configuración del token mediante variable de entorno.
+
+**Flujos:** Solicitudes HTTP, token Bearer, consulta de información y respuestas JSON.
+
+## 5. Límites de confianza
+
+Se identificó un límite de confianza entre el cliente HTTP y la aplicación Flask.
+
+Las solicitudes provenientes del cliente ingresan a la aplicación, donde se realiza la validación del token para acceder al endpoint protegido.
+
+## 6. Riesgos potenciales
+
+- Exposición del token de autenticación.
+- Acceso no autorizado a información de usuarios.
+- Almacenamiento de información únicamente en memoria.
+- Ausencia de un mecanismo específico de auditoría en el código analizado.
+
+Estos riesgos se identificaron mediante revisión del código y análisis de los flujos. No constituyen vulnerabilidades explotadas durante esta actividad.
+
+## 7. Evidencias
+
+- `EVI-2026-10-28-01-dfd-nivel0.png`
+- `EVI-2026-10-28-02-dfd-nivel1.png`
+- `EVI-2026-10-28-03-DFD.mmd`
+- `EVI-2026-10-28-04-lista-elementos.txt`
+
+Los códigos fuente de ambos diagramas se encuentran también en la carpeta `diagramas/`.
+
+## 8. Resultado
+
+Se completó la identificación de elementos y flujos de datos, la elaboración de los DFD de nivel 0 y nivel 1, y la representación de los límites de confianza.
+
+El trabajo permitió comprender cómo circula la información dentro de la API Flask y reconocer puntos donde deben considerarse controles de seguridad.
+
+**Observación:** La aplicación corresponde a un laboratorio académico y no implementa operaciones bancarias reales.

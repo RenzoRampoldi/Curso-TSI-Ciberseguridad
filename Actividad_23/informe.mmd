@@ -1,0 +1,123 @@
+# Informe – Actividad 23: Diagrama de Flujo de Datos (DFD)
+
+**Curso:** RSI – Ciberseguridad Aplicada con IA  
+**Fecha:** 28/10/2026  
+**Sistema analizado:** API REST Flask – Actividad 04  
+**Caso de estudio:** Banco Ficticio del Uruguay
+
+## 1. Objetivo
+
+Identificar y representar los flujos de información de una aplicación mediante diagramas de flujo de datos de nivel 0 y nivel 1, reconociendo los procesos internos, almacenes y límites de confianza para facilitar el análisis de riesgos de seguridad.
+
+## 2. Alcance
+
+Se analizó una API REST desarrollada con Python y Flask durante la Actividad 04.
+
+El análisis se centró en el endpoint `/usuarios`, que permite consultar una lista de usuarios mediante autenticación con token Bearer. También se identificó el endpoint `/health`, utilizado para verificar el funcionamiento de la aplicación.
+
+Se utilizó esta aplicación como sistema de laboratorio para el caso de estudio del Banco Ficticio del Uruguay. No se implementaron operaciones bancarias reales.
+
+## 3. Metodología y herramientas
+
+Se realizó una revisión del código fuente `app.py` para identificar los actores, procesos, almacenes de datos y mecanismos de seguridad.
+
+Se utilizó Mermaid para elaborar los diagramas y Visual Studio Code para crear y guardar los archivos.
+
+Los diagramas fueron exportados en formato PNG como evidencias.
+
+## 4. Elementos y flujos identificados
+
+**Entidad externa:** Cliente HTTP que realiza solicitudes a la API.
+
+**Procesos internos:**
+- Recepción de solicitudes HTTP.
+- Validación del token de autorización.
+- Consulta de usuarios almacenados en memoria.
+- Generación de respuestas JSON.
+
+**Almacenes de datos:**
+- Lista de usuarios definida en el código Python.
+- Token de autenticación obtenido mediante variable de entorno.
+
+**Flujos de información:**
+- Solicitudes HTTP GET.
+- Envío del token Bearer.
+- Comparación del token recibido con el configurado.
+- Recuperación de información de usuarios.
+- Respuestas JSON con información o mensajes de error.
+
+## 5. Diagramas elaborados
+
+### DFD nivel 0
+
+Se representó la interacción general entre el cliente HTTP y la API Flask, identificando el intercambio de solicitudes y respuestas.
+
+Archivo: `diagramas/dfd-nivel0.mmd`
+
+Evidencia: `evidencias/EVI-2026-10-28-01-dfd-nivel0.png`
+
+### DFD nivel 1
+
+Se detallaron los procesos de recepción de solicitudes, validación del token, consulta de información y generación de respuestas.
+
+Archivo: `diagramas/dfd-nivel1.mmd`
+
+Evidencia: `evidencias/EVI-2026-10-28-02-dfd-nivel1.png`
+
+## 6. Límites de confianza
+
+Se identificó un límite de confianza entre el cliente HTTP y el sistema Flask.
+
+El cliente se encuentra fuera del sistema y envía solicitudes que ingresan a la aplicación.
+
+El endpoint `/usuarios` verifica el token Bearer antes de permitir el acceso a los datos.
+
+Esta separación permite identificar dónde deben aplicarse controles de autenticación, autorización y protección de comunicaciones.
+
+## 7. Riesgos identificados
+
+| ID | Riesgo potencial | Impacto posible | Recomendación |
+|---|---|---|---|
+| R-01 | Exposición del token Bearer | Acceso no autorizado | Proteger el token y utilizar comunicaciones cifradas |
+| R-02 | Acceso indebido a información de usuarios | Divulgación de información | Fortalecer la autenticación y autorización |
+| R-03 | Información almacenada únicamente en memoria | Pérdida de datos ante reinicios | Evaluar almacenamiento persistente |
+| R-04 | Ausencia de auditoría específica en el código | Dificultad para investigar accesos | Implementar registros de eventos de seguridad |
+
+Los riesgos fueron identificados mediante el análisis de los flujos y el código fuente. No se realizaron pruebas de explotación durante esta actividad.
+
+## 8. Controles de seguridad observados
+
+Durante la revisión del código se identificaron los siguientes controles:
+
+- Validación de token Bearer en `/usuarios`.
+- Restricción CORS a un origen específico.
+- Cabeceras HTTP de seguridad.
+- Configuración del token mediante variable de entorno.
+- Ejecución de Flask con el modo debug desactivado.
+
+Estos controles fueron identificados en el código. Su eficacia no fue evaluada mediante pruebas de seguridad específicas en esta actividad.
+
+## 9. Utilidad del DFD para el análisis de riesgos
+
+Los diagramas permiten identificar los puntos de entrada y salida de información, así como los procesos que manejan datos de usuarios.
+
+También ayudan a reconocer dónde resulta necesario implementar controles de seguridad, como autenticación, cifrado, validación de solicitudes y registros de auditoría.
+
+Esta documentación constituye una base para futuras evaluaciones de amenazas y mejoras de seguridad.
+
+## 10. Evidencias generadas
+
+- `EVI-2026-10-28-01-dfd-nivel0.png`
+- `EVI-2026-10-28-02-dfd-nivel1.png`
+- `EVI-2026-10-28-03-DFD.mmd`
+- `EVI-2026-10-28-04-lista-elementos.txt`
+
+## 11. Conclusión
+
+La actividad permitió identificar y representar los principales flujos de información de la API Flask desarrollada previamente.
+
+Se elaboraron los diagramas de nivel 0 y nivel 1, se identificaron los límites de confianza y se reconocieron riesgos potenciales relacionados con la autenticación, la exposición de información y el almacenamiento de datos.
+
+Los resultados proporcionan documentación útil para comprender el funcionamiento del sistema y orientar futuras medidas de seguridad.
+
+La actividad se realizó con fines académicos, utilizando un sistema de laboratorio existente.

@@ -1,0 +1,83 @@
+
+ACTIVIDAD 23 - DIAGRAMA DE FLUJO DE DATOS (DFD)
+Sistema: API REST desarrollada con Flask
+Caso de estudio: Banco Ficticio del Uruguay
+Proceso analizado: Consulta de usuarios
+
+1. ENTIDADES EXTERNAS
+
+- Cliente HTTP: usuario o aplicación que realiza solicitudes a la API.
+
+2. PROCESOS
+
+P1 - Recepción de solicitudes HTTP:
+La API Flask recibe solicitudes a los endpoints disponibles.
+
+P2 - Validación de autenticación:
+Para acceder a /usuarios, se verifica el token Bearer recibido.
+
+P3 - Consulta de usuarios:
+Si el token es válido, se obtiene la información de los usuarios almacenados en memoria.
+
+P4 - Generación de respuestas:
+La API devuelve una respuesta JSON con los datos solicitados o un mensaje de error.
+
+3. ALMACENES DE DATOS
+
+D1 - Usuarios en memoria:
+Lista de usuarios definida dentro de la aplicación Python.
+
+D2 - Configuración del token:
+Token utilizado para validar las solicitudes protegidas.
+
+No se identificó una base de datos persistente en el código analizado.
+
+4. FLUJOS DE DATOS
+
+F1 - Cliente a API:
+Solicitud HTTP GET /usuarios con token Bearer.
+
+F2 - API a validación:
+Envío del token recibido para verificar su validez.
+
+F3 - Configuración a validación:
+Obtención del token esperado.
+
+F4 - Validación a consulta:
+Autorización para acceder a la información.
+
+F5 - Almacén de usuarios a consulta:
+Recuperación de la lista de usuarios.
+
+F6 - Consulta a generación de respuesta:
+Transferencia de los datos recuperados.
+
+F7 - API a cliente:
+Respuesta JSON con usuarios o error 401.
+
+5. LÍMITES DE CONFIANZA
+
+El cliente HTTP se encuentra fuera del límite de confianza de la aplicación.
+
+La API Flask, sus procesos internos y sus datos en memoria se encuentran dentro del límite del sistema.
+
+El límite se cruza cuando el cliente envía solicitudes y recibe respuestas HTTP.
+
+6. CONTROLES DE SEGURIDAD IDENTIFICADOS
+
+- Validación de token Bearer para /usuarios.
+- Configuración CORS para un origen específico.
+- Cabeceras HTTP de seguridad.
+- Modo debug desactivado.
+
+7. RIESGOS POTENCIALES
+
+R01 - Exposición del token de autenticación.
+R02 - Acceso no autorizado a información de usuarios.
+R03 - Falta de persistencia de los datos almacenados en memoria.
+R04 - Ausencia de registros de auditoría específicos en el código revisado.
+
+NOTA:
+El sistema utilizado es una API de laboratorio. No representa
+un sistema bancario real ni implementa el alta de clientes
+o consultas de saldos.

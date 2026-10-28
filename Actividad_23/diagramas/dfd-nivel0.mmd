@@ -1,0 +1,8 @@
+flowchart LR
+    C["Cliente HTTP"]
+    subgraph API["Sistema API Flask"]
+        P(("0. API REST"))
+    end
+    C -->|"GET /health o GET /usuarios y token"| P
+    P -->|"JSON: estado, usuarios o error"| C
+    style API stroke-dasharray: 5 5
