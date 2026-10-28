@@ -1,0 +1,52 @@
+
+flowchart TD
+    C["Cliente HTTP"]
+
+    subgraph API["API Flask - Limite de confianza"]
+        P1["P1: Recibir solicitud"]
+        P2["P2: Validar token"]
+        P3["P3: Consultar usuarios"]
+        P4["P4: Generar JSON"]
+        D1[("D1: Usuarios en memoria")]
+        D2[("D2: Token configurado")]
+
+        P1 --> P2
+        P2 -->|"Valido"| P3
+        P2 -->|"Invalido: 401"| P4
+        D2 --> P2
+        D1 --> P3
+        P3 --> P4
+    end
+
+    C -->|"GET /usuarios + Bearer"| P1
+    P4 -->|"Respuesta JSON"| C
+
+    S["S: Token robado"]
+    T["T: Alteracion HTTP"]
+    R["R: Falta de auditoria"]
+    I["I: Exposicion de usuarios"]
+    D["D: Saturacion de API"]
+    E["E: Riesgo futuro de privilegios"]
+
+    S -.-> P2
+    T -.-> P1
+    R -.-> P3
+    I -.-> D1
+    D -.-> P1
+    E -.-> P2
+
+    K1["Control: Rotacion de tokens"]
+    K2["Control: HTTPS/TLS"]
+    K3["Control: Logs de acceso"]
+    K4["Control: Autorizacion por roles"]
+    K5["Control: Limitar solicitudes"]
+
+    S -.-> K1
+    T -.-> K2
+    R -.-> K3
+    I -.-> K4
+    D -.-> K5
+    E -.-> K4
+
+    style API stroke-dasharray: 5 5
+  

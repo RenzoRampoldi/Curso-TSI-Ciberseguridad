@@ -1,0 +1,85 @@
+# Bitácora – Actividad 24: Diagrama de Amenazas STRIDE
+
+**Fecha:** 28/10/2026  
+**Curso:** RSI – Ciberseguridad Aplicada con IA  
+**Sistema:** API REST Flask – Actividad 04  
+**Base del análisis:** DFD de la Actividad 23  
+**Caso de estudio:** Banco Ficticio del Uruguay
+
+## 1. Objetivo
+
+Aplicar la metodología STRIDE sobre los diagramas de flujo de datos desarrollados en la Actividad 23, identificando amenazas potenciales, priorizando los riesgos más importantes y proponiendo controles de seguridad.
+
+## 2. Alcance
+
+Se analizó la API REST desarrollada con Python y Flask durante la Actividad 04.
+
+El análisis se centró en el endpoint `/usuarios`, la validación mediante token Bearer, el almacenamiento de usuarios en memoria y las respuestas JSON.
+
+Se utilizó el DFD de nivel 1 de la Actividad 23 como referencia para identificar los componentes y flujos de información.
+
+## 3. Actividades realizadas
+
+- Se revisaron los diagramas DFD de la Actividad 23.
+- Se identificaron amenazas potenciales utilizando las seis categorías STRIDE.
+- Se relacionaron las amenazas con los componentes y flujos de la API.
+- Se elaboró una tabla STRIDE con las amenazas, sus impactos y controles recomendados.
+- Se seleccionaron tres amenazas prioritarias considerando impacto y probabilidad estimada.
+- Se elaboró un diagrama de amenazas utilizando Mermaid.
+- Se exportó el diagrama como imagen PNG.
+- Se guardaron los códigos fuente y las evidencias.
+
+## 4. Tabla STRIDE
+
+| Categoría | Amenaza identificada | Impacto |
+|---|---|---|
+| Spoofing | Uso de un token Bearer robado | Alto |
+| Tampering | Modificación de comunicaciones HTTP no protegidas | Alto |
+| Repudiation | Ausencia de registros de auditoría específicos | Medio |
+| Information Disclosure | Exposición de información de usuarios | Alto |
+| Denial of Service | Saturación de la API mediante solicitudes excesivas | Medio |
+| Elevation of Privilege | Acceso a funciones privilegiadas si se incorporan sin controles adecuados | Alto |
+
+## 5. Amenazas prioritarias
+
+Se seleccionaron las siguientes amenazas:
+
+1. **Information Disclosure:** exposición de datos de usuarios mediante acceso no autorizado.
+2. **Spoofing:** suplantación de un cliente mediante el uso de un token robado.
+3. **Tampering:** modificación de datos transmitidos si la comunicación no está cifrada.
+
+La priorización es cualitativa y corresponde al escenario académico analizado.
+
+## 6. Controles recomendados
+
+- Implementar HTTPS/TLS para proteger las comunicaciones.
+- Fortalecer la gestión de tokens de autenticación.
+- Incorporar mecanismos de autorización por roles.
+- Implementar registros de auditoría.
+- Limitar la cantidad de solicitudes por cliente.
+- Aplicar el principio de mínimo privilegio.
+
+Estos controles se proponen como mejoras y no deben interpretarse como implementados.
+
+## 7. Evidencias
+
+- `EVI-2026-10-28-01-tabla-stride.txt`
+- `EVI-2026-10-28-02-diagrama-amenazas.png`
+- `EVI-2026-10-28-03-prioridades.txt`
+- `EVI-2026-10-28-04-STRIDE.mmd`
+
+Código fuente: `diagramas/amenazas-stride.mmd`.
+
+## 8. Resultados
+
+Se aplicaron las seis categorías STRIDE, se relacionaron las amenazas con los componentes del DFD y se identificaron tres escenarios prioritarios.
+
+El análisis permitió reconocer posibles riesgos para la confidencialidad, integridad y disponibilidad de la información.
+
+No se ejecutaron ataques ni pruebas de explotación durante esta actividad.
+
+## 9. Conclusión
+
+La actividad permitió complementar el análisis de flujos de datos realizado en la Actividad 23 mediante la identificación y clasificación de amenazas.
+
+El modelo STRIDE facilitó la priorización de riesgos potenciales y la propuesta de controles para mejorar la seguridad de la API Flask utilizada como sistema de laboratorio.

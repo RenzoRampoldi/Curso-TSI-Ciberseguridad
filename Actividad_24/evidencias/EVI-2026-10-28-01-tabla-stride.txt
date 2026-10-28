@@ -1,0 +1,46 @@
+
+ACTIVIDAD 24 - ANALISIS DE AMENAZAS STRIDE
+Sistema: API REST Flask - Actividad 04
+Base: DFD de la Actividad 23
+Fecha: 28/10/2026
+
+S - SPOOFING (Suplantacion de identidad)
+Elemento: Cliente HTTP / Validacion de token
+Amenaza: Un atacante podria utilizar un token Bearer robado para acceder a /usuarios.
+Impacto: ALTO
+Control propuesto: HTTPS, proteccion y rotacion de tokens.
+
+T - TAMPERING (Manipulacion de datos)
+Elemento: Flujo HTTP entre cliente y API
+Amenaza: Si la comunicacion no esta cifrada, un atacante con capacidad de interceptarla podria modificar las respuestas.
+Impacto: ALTO
+Control propuesto: HTTPS/TLS para proteger la integridad de las comunicaciones.
+
+R - REPUDIATION (Repudio)
+Elemento: Consulta de usuarios / Auditoria
+Amenaza: La ausencia de registros de auditoria dificulta determinar quien realizo una consulta.
+Impacto: MEDIO
+Control propuesto: Implementar logs de acceso con fecha, hora y resultado de autenticacion, sin registrar tokens.
+
+I - INFORMATION DISCLOSURE (Divulgacion de informacion)
+Elemento: Almacen de usuarios / Respuesta JSON
+Amenaza: La utilizacion indebida de un token valido podria exponer los datos de los usuarios.
+Impacto: ALTO
+Control propuesto: Control de acceso por roles, minimizacion de datos y HTTPS.
+
+D - DENIAL OF SERVICE (Denegacion de servicio)
+Elemento: API Flask / Recepcion de solicitudes
+Amenaza: Un volumen excesivo de solicitudes podria afectar la disponibilidad de la aplicacion.
+Impacto: MEDIO
+Control propuesto: Limitar solicitudes por cliente, establecer tiempos de espera y monitorear el servicio.
+
+E - ELEVATION OF PRIVILEGE (Elevacion de privilegios)
+Elemento: Validacion de token / Control de acceso
+Amenaza: Si se incorporan funciones administrativas sin validar roles, un usuario comun podria acceder a operaciones privilegiadas.
+Impacto: ALTO
+Control propuesto: Autorizacion por roles y principio de minimo privilegio.
+
+NOTA:
+Las amenazas son escenarios potenciales identificados mediante
+el analisis del codigo y los DFD de la Actividad 23.
+No representan ataques ejecutados ni vulnerabilidades confirmadas.

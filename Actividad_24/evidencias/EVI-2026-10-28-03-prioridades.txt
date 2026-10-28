@@ -1,0 +1,69 @@
+
+ACTIVIDAD 24 - PRIORIZACION DE AMENAZAS STRIDE
+
+Sistema: API REST Flask - Actividad 04
+Fecha: 28/10/2026
+Base: DFD de la Actividad 23
+
+PRIORIDAD 1 - INFORMATION DISCLOSURE
+
+Amenaza:
+Exposicion de informacion de usuarios mediante
+el uso indebido de un token de autenticacion valido.
+
+Elemento afectado:
+Endpoint /usuarios y respuesta JSON.
+
+Impacto: ALTO
+Probabilidad estimada: MEDIA
+
+Control recomendado:
+Implementar controles de autorizacion por roles,
+minimizar los datos devueltos y proteger las
+comunicaciones mediante HTTPS.
+
+
+PRIORIDAD 2 - SPOOFING
+
+Amenaza:
+Un atacante podria utilizar un token Bearer robado
+para suplantar a un cliente autorizado.
+
+Elemento afectado:
+Proceso de validacion del token.
+
+Impacto: ALTO
+Probabilidad estimada: MEDIA
+
+Control recomendado:
+Proteger los tokens, implementar mecanismos de
+expiracion y rotacion, y utilizar HTTPS.
+
+
+PRIORIDAD 3 - TAMPERING
+
+Amenaza:
+Alteracion de datos transmitidos entre el cliente
+y la API si la comunicacion no esta cifrada.
+
+Elemento afectado:
+Flujo HTTP entre el cliente y Flask.
+
+Impacto: ALTO
+Probabilidad estimada: BAJA en el entorno local.
+
+Control recomendado:
+Utilizar HTTPS/TLS para garantizar la integridad
+y confidencialidad de las comunicaciones.
+
+
+CONCLUSION
+
+Las tres amenazas fueron priorizadas porque
+pueden afectar la confidencialidad, autenticidad
+e integridad de la informacion.
+
+Las probabilidades son estimaciones cualitativas
+basadas en el escenario de laboratorio.
+
+No se realizaron ataques ni pruebas de explotacion.

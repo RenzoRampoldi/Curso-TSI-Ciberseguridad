@@ -1,0 +1,121 @@
+# Informe – Actividad 24: Análisis de Amenazas STRIDE
+
+**Curso:** RSI – Ciberseguridad Aplicada con IA  
+**Fecha:** 28/10/2026  
+**Sistema analizado:** API REST Flask – Actividad 04  
+**Caso de estudio:** Banco Ficticio del Uruguay
+
+## 1. Objetivo
+
+Aplicar la metodología STRIDE al diagrama de flujo de datos desarrollado en la Actividad 23, identificando amenazas potenciales, evaluando su impacto y proponiendo controles de seguridad.
+
+## 2. Alcance
+
+Se analizó la API REST desarrollada con Python y Flask durante la Actividad 04.
+
+El sistema permite consultar información de usuarios mediante el endpoint `/usuarios`, protegido con un token Bearer.
+
+El análisis se realizó sobre los procesos, flujos de información y almacenes identificados en el DFD de nivel 1.
+
+## 3. Metodología
+
+Se aplicó el modelo STRIDE, que permite clasificar las amenazas en seis categorías:
+
+- Spoofing: suplantación de identidad.
+- Tampering: manipulación de datos.
+- Repudiation: negación de acciones.
+- Information Disclosure: divulgación de información.
+- Denial of Service: denegación de servicio.
+- Elevation of Privilege: elevación de privilegios.
+
+Para cada categoría se identificó un escenario de amenaza, el componente afectado y un control recomendado.
+
+Posteriormente se seleccionaron las tres amenazas prioritarias mediante una evaluación cualitativa de impacto y probabilidad.
+
+## 4. Amenazas identificadas
+
+| ID | STRIDE | Amenaza potencial | Impacto |
+|---|---|---|---|
+| S-01 | Spoofing | Utilización de un token Bearer robado | Alto |
+| T-01 | Tampering | Alteración de comunicaciones HTTP | Alto |
+| R-01 | Repudiation | Falta de registros de auditoría específicos | Medio |
+| I-01 | Information Disclosure | Exposición de información de usuarios | Alto |
+| D-01 | Denial of Service | Saturación de la API mediante solicitudes | Medio |
+| E-01 | Elevation of Privilege | Acceso indebido a futuras funciones privilegiadas | Alto |
+
+Los escenarios descritos son amenazas potenciales y no representan vulnerabilidades confirmadas mediante explotación.
+
+## 5. Priorización de amenazas
+
+Se seleccionaron tres amenazas principales:
+
+**Prioridad 1 – Information Disclosure**
+
+La utilización indebida de un token válido podría permitir consultar información de usuarios.
+
+Impacto estimado: Alto.  
+Probabilidad estimada: Media.
+
+**Prioridad 2 – Spoofing**
+
+Un atacante que obtenga un token válido podría utilizarlo para suplantar a un cliente autorizado.
+
+Impacto estimado: Alto.  
+Probabilidad estimada: Media.
+
+**Prioridad 3 – Tampering**
+
+En comunicaciones sin cifrado, un atacante con capacidad de interceptar el tráfico podría modificar la información transmitida.
+
+Impacto estimado: Alto.  
+Probabilidad estimada: Baja en el entorno local.
+
+Las probabilidades corresponden a estimaciones académicas y pueden cambiar si el sistema se despliega en otro entorno.
+
+## 6. Diagrama de amenazas
+
+Se elaboró un diagrama en Mermaid utilizando los componentes identificados en la Actividad 23.
+
+El diagrama relaciona los procesos internos de la API con las seis categorías STRIDE y sus controles de mitigación recomendados.
+
+Archivo: `diagramas/amenazas-stride.mmd`
+
+Evidencia: `evidencias/EVI-2026-10-28-02-diagrama-amenazas.png`
+
+## 7. Controles recomendados
+
+| Amenaza | Control recomendado |
+|---|---|
+| Spoofing | Protección, expiración y rotación de tokens |
+| Tampering | HTTPS/TLS |
+| Repudiation | Registros de auditoría |
+| Information Disclosure | Autorización por roles y minimización de datos |
+| Denial of Service | Limitación de solicitudes y monitoreo |
+| Elevation of Privilege | Principio de mínimo privilegio y validación de permisos |
+
+Los controles representan recomendaciones y no modificaciones implementadas durante esta actividad.
+
+## 8. Relación con la gestión de riesgos
+
+La aplicación de STRIDE permite reconocer amenazas en los puntos donde circula y se procesa información.
+
+La clasificación y priorización de riesgos ayuda a determinar dónde conviene fortalecer la autenticación, la protección de datos, la disponibilidad del servicio y los mecanismos de auditoría.
+
+El análisis constituye una base para futuras evaluaciones y mejoras de seguridad.
+
+## 9. Evidencias generadas
+
+- `EVI-2026-10-28-01-tabla-stride.txt`
+- `EVI-2026-10-28-02-diagrama-amenazas.png`
+- `EVI-2026-10-28-03-prioridades.txt`
+- `EVI-2026-10-28-04-STRIDE.mmd`
+
+## 10. Conclusión
+
+La Actividad 24 permitió aplicar las seis categorías del modelo STRIDE sobre el DFD desarrollado anteriormente.
+
+Se identificaron amenazas potenciales, se seleccionaron tres escenarios prioritarios y se propusieron controles para reducir los riesgos asociados.
+
+El trabajo permitió comprender la utilidad del modelado de amenazas como herramienta preventiva para analizar la seguridad de una aplicación existente.
+
+El análisis se realizó con fines académicos, sin ejecutar ataques ni modificar el código de la API.
